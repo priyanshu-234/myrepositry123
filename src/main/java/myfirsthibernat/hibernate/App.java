@@ -20,24 +20,23 @@ public class App
      SessionFactory  factory  =  cfg.buildSessionFactory();
      System.out.println(factory);
      System.out.println( "goo  working  with hibrnae '");
+     student  st =  new  student();
      
-    
+     st.setName("devid  ");
      
-     
-     
-     
-     
-     Session  session1  = factory.openSession();
-     student1  stu  =  (student1)session1.load(student1.class,1);
-     System.out.println(stu.getAge()+":"+stu.getPhone());
-     System.out.println("hello  world");
-     
-              
+     st.setSirname("varner");
+     st.setCity("new  delhi");
      
      
-    
+     
+     
+     
+     Session  session1  = factory.getCurrentSession();
+     
+     Transaction  t  =  session1.beginTransaction();
+     session1.save(st);
+    t.commit();
     session1.close();
-    factory.close();
     
     }
 }
